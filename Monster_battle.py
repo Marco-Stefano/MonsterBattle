@@ -1,4 +1,4 @@
-from Random import randint
+from random import randint
 from enum import Enum, auto
 
 
@@ -11,14 +11,14 @@ class Match():
         max_list = []
         max = None
         for i in range(len(monsters)) :
-            if not (monsters[i].isKO == True or monster[i].charging == True or monster[i].hasAttacked == True):
+            if not (monsters[i].isKO == True or monsters[i].charging == True or monster[i].hasAttacked == True):
                 if max == None:
                     max = monsters[i].get_stat[Stats.Speed]
                     max_list = [i]
-                elif monster[i].get_stat[Stats.Speed] > monster[max].get_stats[Stats.Speed]:
+                elif monsters[i].get_stat[Stats.Speed] > monsters[max].get_stats[Stats.Speed]:
                     max = monsters[i].get_stat[Stats.Speed]
                     max_list = [i]
-                elif monster[i].get_stat[Stats.Speed] == monster[max].get_stats[Stats.Speed]:
+                elif monsters[i].get_stat[Stats.Speed] == monsters[max].get_stats[Stats.Speed]:
                     max_list.append(i)
         if max == None:
             return None
@@ -28,9 +28,9 @@ class Match():
     def max_speed_monster(self):
         max = [None, None]
         if self.players[0].number_of_attacks < 3:
-            max[0] = max_speed_player(players[0].monsters_on_ground)
+            max[0] = self.max_speed_of_player(self.players[0].monsters_on_ground)
         if self.players[1].number_of_attacks < 3:
-            max[1] = max_speed_player(players[1].monsters_on_ground)
+            max[1] = self.max_speed_player(self.players[1].monsters_on_ground)
         if max[0] == None:
             if (max[1] == None):
                 return None
@@ -53,7 +53,7 @@ class Monster():
         self.individual_values = individual_values
 
     def get_stat(self, stat):
-        if stat == Stat.moving
+        if stat == Stats.moving
             return self.type.base_stat[stat]
         return self.type.base_stat[stat] + self.individual_values[stat]
 
@@ -123,9 +123,6 @@ class Player():
         m.actual_moving = m.monster.get_stat[Stats.Moving]
         return True
 
-    def replace_monster
-
-
 class Playground():
     def __init__(self, monsters_positions):
         self.ground = [[Square(), Square(), Square()],
@@ -158,11 +155,11 @@ class Square():
 
     def apply_effect(self, effect_type):
         return
-        //à completer
+        // à completer
 
     def apply_orb(self)
         return
-        //à completer
+        // à completer
 
 class Square_effect(Enum):
     Null = 0
@@ -189,5 +186,3 @@ class Stats(Enum):
     Speed = auto()
     Defense = auto()
     Moving = auto()
-
-
